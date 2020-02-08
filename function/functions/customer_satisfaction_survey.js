@@ -38,7 +38,7 @@ exports.handler = async(context, event, callback) =>{
 const greetingTaskHandler = async (context, event, callback) => {
 
     const Say = 'Hi! Can you spare a few minutes to answer a few questions about your experience?',
-          Listen = true,
+          Listen = false,
           Collect = false,
           TaskFilter = ["start_survey", "goodbye"];
 
@@ -83,7 +83,7 @@ const startSurveyTaskHandler = async (context, event, callback) => {
 //complete_survey handler function
 const completeSurveyTaskHandler = async (context, event, callback) => {
 
-    const {nps_score, nps_reason, research_yes_no} = JSON.parse(event.memory).twilio.collected_data.csat_answers.answers,
+    const {nps_score, nps_reason, research_yes_no} = JSON.parse(event.Memory).twilio.collected_data.csat_answers.answers,
           Say = `Thank you so much for your time. If you answered yes to the last question, we'll reach out to schedule a customer research session with you. Goodbye!`,
           Listen = false,
           Collect = false,
